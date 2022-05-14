@@ -1,0 +1,284 @@
+game.Players.LocalPlayer.Character.Humanoid.HipHeight = 3.7 -- change height here
+local UIS = game:GetService("UserInputService")
+local userInputService = game:GetService("UserInputService")
+
+local unanchoredparts = {}
+		local movers = {}
+		local tog = true
+		local move = false
+		local Player = game:GetService("Players").LocalPlayer
+		local Character = Player.Character
+		local mov = {};
+		local mov2 = {};
+
+		local Hats = {Hat1  = Character:WaitForChild("SparksFinalPrize"),
+        Hat2  = Character:WaitForChild("MeshPartAccessory"), 
+        Hat3  = Character:WaitForChild("LavanderHair"),
+        Hat4  = Character:WaitForChild("Pal Hair"),
+        Hat5  = Character:WaitForChild("Hair_AccAccessory"),
+        Hat6  = Character:WaitForChild("Metashard"),
+        Hat7  = Character:WaitForChild("Kate Hair"),
+        Hat8  = Character:WaitForChild("Pink Hair"),
+        Hat9  = Character:WaitForChild("Hat1"),
+        Hat10  = Character:WaitForChild("Robloxclassicred"),
+		}
+
+
+		--Dont touch below
+
+		for i,v in next, Hats do
+			v.Handle.AccessoryWeld:Remove()
+			for _,mesh in next, v:GetDescendants() do
+				if mesh:IsA("Mesh") or mesh:IsA("SpecialMesh") then -- change mesh to Specialmesh if u want to destroy the mesh
+					mesh:Remove()
+				end
+			end
+		end
+
+		function ftp(str)
+			local pt = {};
+			if str ~= 'me' and str ~= 'random' then
+				for i, v in pairs(game.Players:GetPlayers()) do
+					if v.Name:lower():find(str:lower()) then
+						table.insert(pt, v);
+					end
+				end
+			elseif str == 'me' then
+				table.insert(pt, plr);
+			elseif str == 'random' then
+				table.insert(pt, game.Players:GetPlayers()[math.random(1, #game.Players:GetPlayers())]);
+			end
+			return pt;
+		end
+
+		local function align(i,v)
+			local att0 = Instance.new("Attachment", i)
+			att0.Position = Vector3.new(0,0,0)
+			local att1 = Instance.new("Attachment", v)
+			att1.Position = Vector3.new(0,0,0)
+			local AP = Instance.new("AlignPosition", i)
+			AP.Attachment0 = att0
+			AP.Attachment1 = att1
+			AP.RigidityEnabled = false
+			AP.ReactionForceEnabled = false
+			AP.ApplyAtCenterOfMass = false
+			AP.MaxForce = 9999999
+			AP.MaxVelocity = math.huge
+			AP.Responsiveness = 65
+			local AO = Instance.new("AlignOrientation", i)
+			AO.Attachment0 = att0
+			AO.Attachment1 = att1
+			AO.ReactionTorqueEnabled = false
+			AO.PrimaryAxisOnly = false
+			AO.MaxTorque = 9999999
+			AO.MaxAngularVelocity = math.huge
+			AO.Responsiveness = 50
+		end
+
+
+		--Dont touch above
+
+		align(Hats.Hat1.Handle, Character["Torso"])
+		align(Hats.Hat2.Handle, Character["Head"])
+      	align(Hats.Hat3.Handle, Character["Head"])
+      	align(Hats.Hat4.Handle, Character["Head"])
+        align(Hats.Hat5.Handle, Character["Torso"])
+      	align(Hats.Hat6.Handle, Character["Torso"])
+      	align(Hats.Hat7.Handle, Character["Left Arm"])
+      	align(Hats.Hat8.Handle, Character["Left Arm"])
+      	align(Hats.Hat9.Handle, Character["Right Arm"])
+      	align(Hats.Hat10.Handle, Character["Right Arm"])
+
+		
+
+
+     Hats.Hat1.Handle.Attachment.Rotation = Vector3.new(0,0,0) 
+     Hats.Hat2.Handle.Attachment.Rotation = Vector3.new(0,0,0) 
+     Hats.Hat3.Handle.Attachment.Rotation = Vector3.new(0,0,0)
+     Hats.Hat4.Handle.Attachment.Rotation = Vector3.new(0,0,0)
+     Hats.Hat5.Handle.Attachment.Rotation = Vector3.new(0,0,0)
+     Hats.Hat6.Handle.Attachment.Rotation = Vector3.new(0,0,0)
+     Hats.Hat7.Handle.Attachment.Rotation = Vector3.new(0,0,0)
+     Hats.Hat8.Handle.Attachment.Rotation = Vector3.new(0,0,0)
+     Hats.Hat9.Handle.Attachment.Rotation = Vector3.new(0,0,0)
+     Hats.Hat10.Handle.Attachment.Rotation = Vector3.new(0,0,0)
+		
+
+		
+      Character:WaitForChild("Torso"):FindFirstChild("Attachment").Name = "Attachment1" -- make a new attachment to
+	  Character:WaitForChild("Head"):FindFirstChild("Attachment").Name = "Attachment2" 
+      Character:WaitForChild("Head"):FindFirstChild("Attachment").Name = "Attachment3" 
+      Character:WaitForChild("Head"):FindFirstChild("Attachment").Name = "Attachment4"
+      Character:WaitForChild("Torso"):FindFirstChild("Attachment").Name = "Attachment5"
+      Character:WaitForChild("Torso"):FindFirstChild("Attachment").Name = "Attachment6"
+      Character:WaitForChild("Left Arm"):FindFirstChild("Attachment").Name = "Attachment7"
+      Character:WaitForChild("Left Arm"):FindFirstChild("Attachment").Name = "Attachment8"
+      Character:WaitForChild("Right Arm"):FindFirstChild("Attachment").Name = "Attachment9"
+      Character:WaitForChild("Right Arm"):FindFirstChild("Attachment").Name = "Attachment10"
+
+        Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(0, -2, 0)
+      Character:WaitForChild("Head").Attachment2.Position = Vector3.new(0, 1, -0.5)
+      Character:WaitForChild("Head").Attachment3.Position = Vector3.new(2, 2, -1)
+      Character:WaitForChild("Head").Attachment4.Position = Vector3.new(-2, 2, -1)
+      Character:WaitForChild("Torso").Attachment5.Position = Vector3.new(1.2, -6, -0)
+      Character:WaitForChild("Torso").Attachment6.Position = Vector3.new(-1.2, -6, -0)
+      Character:WaitForChild("Left Arm").Attachment7.Position = Vector3.new(-1, 0, 0)
+      Character:WaitForChild("Left Arm").Attachment8.Position = Vector3.new(-1, -2, 0)
+      Character:WaitForChild("Right Arm").Attachment9.Position = Vector3.new(1, 0, 0)
+      Character:WaitForChild("Right Arm").Attachment10.Position = Vector3.new(1, -2, 0)
+      
+        -- the mid value is up or down it depends it goes down if u have a minus infront of it and up if u dont
+		-- the last value is forwards or backwards if u put a minus infront of it it goes forward and if u remove the minus it goes backwards
+		-- the first value is to the side if u dont have minus and to the other side if u have minus im bad at explaining lol
+		Character:WaitForChild("Torso").Attachment1.Rotation = Vector3.new(-0, 0, -90)
+		Character:WaitForChild("Head").Attachment2.Rotation = Vector3.new(70, 0, -0)
+	    Character:WaitForChild("Head").Attachment3.Rotation = Vector3.new(40, -70, -0)
+	    Character:WaitForChild("Head").Attachment4.Rotation = Vector3.new(-100, -70, 25)
+	    Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(0, 0, 0)
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(0, 0, 0)
+		Character:WaitForChild("Left Arm").Attachment7.Rotation = Vector3.new(90, 0, 0)
+		Character:WaitForChild("Left Arm").Attachment8.Rotation = Vector3.new(90, 0, 0)
+		Character:WaitForChild("Right Arm").Attachment9.Rotation = Vector3.new(90, 0, 0)
+		Character:WaitForChild("Right Arm").Attachment10.Rotation = Vector3.new(90, 0, 0)
+
+UIS.InputBegan:Connect(function(inputObject) 
+    -- Check if input is the U key.
+    if(inputObject.KeyCode==Enum.KeyCode.W)then
+      epik = true
+        
+    end
+end)
+
+UIS.InputBegan:Connect(function(inputObject) 
+    -- Check if input is the U key.
+    if(inputObject.KeyCode==Enum.KeyCode.A)then
+      epik = true
+        
+    end
+end)
+
+UIS.InputBegan:Connect(function(inputObject) 
+    -- Check if input is the U key.
+    if(inputObject.KeyCode==Enum.KeyCode.S)then
+      epik = true
+        
+    end
+end)
+
+UIS.InputBegan:Connect(function(inputObject) 
+    -- Check if input is the U key.
+    if(inputObject.KeyCode==Enum.KeyCode.D)then
+      epik = true
+        
+    end
+end)
+
+UIS.InputEnded:Connect(function(inputObject)
+    -- Check if input lost was the U key.
+    if(inputObject.KeyCode==Enum.KeyCode.D)then
+        Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(90, 0, 0)
+        wait()
+        Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(90, 0, 0)
+        epik = false
+while wait() do
+if epik == true then
+	    Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(50, 0, 0)
+	    wait()
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(-50, 0, 0)
+		wait(0.2)
+	    Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(-50, 0, 0)
+	    wait()
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(50, 0, 0)
+		wait()
+end
+end
+    end
+end)
+
+-- Detect input ended
+UIS.InputEnded:Connect(function(inputObject)
+    -- Check if input lost was the U key.
+    if(inputObject.KeyCode==Enum.KeyCode.S)then
+        Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(90, 0, 0)
+        wait()
+        Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(90, 0, 0)
+        epik = false
+while wait() do
+if epik == true then
+	    Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(50, 0, 0)
+	    wait()
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(-50, 0, 0)
+		wait(0.2)
+	    Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(-50, 0, 0)
+	    wait()
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(50, 0, 0)
+		wait()
+end
+end
+    end
+end)
+
+UIS.InputEnded:Connect(function(inputObject)
+    -- Check if input lost was the U key.
+    if(inputObject.KeyCode==Enum.KeyCode.A)then
+        Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(90, 0, 0)
+        wait()
+        Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(90, 0, 0)
+        epik = false
+while wait() do
+if epik == true then
+	    Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(50, 0, 0)
+	    wait()
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(-50, 0, 0)
+		wait(0.2)
+	    Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(-50, 0, 0)
+	    wait()
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(50, 0, 0)
+		wait()
+end
+end
+    end
+end)
+
+UIS.InputEnded:Connect(function(inputObject)
+    -- Check if input lost was the U key.
+    if(inputObject.KeyCode==Enum.KeyCode.W)then
+        Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(90, 0, 0)
+        wait()
+        Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(90, 0, 0)
+        epik = false
+while wait() do
+if epik == true then
+	    Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(50, 0, 0)
+	    wait()
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(-50, 0, 0)
+		wait(0.2)
+	    Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(-50, 0, 0)
+	    wait()
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(50, 0, 0)
+		wait()
+end
+end
+    end
+end)
+
+while wait() do
+if epik == true then
+        Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(90, 0, 0)
+	    wait()
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(90, 0, 0)
+		wait(0.1)
+	    Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(50, 0, 0)
+	    wait()
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(-50, 0, 0)
+		wait(0.2)
+	    Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(-50, 0, 0)
+	    wait()
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(50, 0, 0)
+		wait(0.2)
+		Character:WaitForChild("Torso").Attachment5.Rotation = Vector3.new(90, 0, 0)
+	    wait()
+		Character:WaitForChild("Torso").Attachment6.Rotation = Vector3.new(90, 0, 0)
+		wait(0.1)
+end
+end
